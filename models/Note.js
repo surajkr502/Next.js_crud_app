@@ -1,60 +1,24 @@
-// import mongoose from 'mongoose';
-
-// const noteSchema = new mongoose.Schema({
-//     title: {
-//         type: String,
-//         required: true,
-//         maxLength: 100,
-//     },
-//     content: {
-//         type: String,
-//         required: true, 
-//         maxLength: 2000,
-//     },
-//     createdAt: {
-//         type: Date,
-//         default: Date.now,
-//     },
-//     updatedAt: {
-//         type: Date,
-//         default: Date.now,
-//     },
-// });
-// noteSchema.pre('save', function (next) {    
-//     this.updatedAt = Date.now();
-//     next();
-// });
-
-// export default mongoose.models.Note || mongoose.model('Note', noteSchema);
-
-// incomplete
 import mongoose from "mongoose";
 
-const NoteSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
-        maxlength:100
+const NoteSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Title is required"],
+      maxlength: [100, "Title cannot exceed 100 characters"],
+      trim: true,
     },
-    content:{
-        type:String,
-        required:true,
-        maxlength:2000
+    content: {
+      type: String,
+      required: [true, "Content is required"],
+      maxlength: [2000, "Content cannot exceed 2000 characters"],
+      trim: true,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now
-    },
-    updatedAt:{
-        type:Date,
-        default:Date.now
-    }
-})
+  },
+  {
+    timestamps: true, // automatically creates createdAt & updatedAt
+  }
+);
 
-NoteSchema.pre("save",function(next){
-    this.updatedAt = Date.now()
-    next()
-})
-
-export default mongoose.models.Note 
-|| mongoose.model("Note",NoteSchema)
+export default mongoose.models.Note ||
+  mongoose.model("Note", NoteSchema);

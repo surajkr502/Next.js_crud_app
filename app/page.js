@@ -13,6 +13,7 @@ async function getNotes() {
   }))
 }
 export default async function Home() {
+  await dbConnect();
 
   const notes = await getNotes()
 
