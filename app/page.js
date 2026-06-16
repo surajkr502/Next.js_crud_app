@@ -3,6 +3,16 @@ import dbConnect from "@/lib/db";
 import Note from "@/models/Note";
 import Image from "next/image";
 
+// export const dynamic = 'force-dynamic';
+
+// export default async function Home() {
+
+  
+// }
+
+
+
+
 async function getNotes() {
     await dbConnect();
   const notes = await Note.find({}).sort({createdAt:-1}).lean()
