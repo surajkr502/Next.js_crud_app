@@ -1,8 +1,6 @@
-import NotesClient from "@/components/NotesClient";
-import dbConnect from "@/lib/db";
-import Note from "@/models/Note";
-import Image from "next/image";
-
+import NotesClient from '@/components/NotesClient'
+import dbConnect from '@/lib/db';
+import Note from '@/models/Note';
 // export const dynamic = 'force-dynamic';
 
 // export default async function Home() {
